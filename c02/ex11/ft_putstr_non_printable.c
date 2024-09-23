@@ -32,7 +32,7 @@ void ft_putstr_non_printable(char *str)
 			write(1, &d, 1);
 			d = (c % 16);
 			if (d > 9)
-				d = d % 10 + 'A';
+				d = d % 10 + 'a';
 			else
 				d = d + '0';
 			write(1, &d, 1);
@@ -43,7 +43,6 @@ void ft_putstr_non_printable(char *str)
 /*
 int main(void)
 {
-	ft_putstr_non_printable("asdasdasd\n\a\v");
+	ft_putstr_non_printable("Coucou\ntu vas bien ?");
 		return 0;
-}
-*/
+}*/
