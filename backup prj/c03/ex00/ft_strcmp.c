@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:53:02 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/23 15:55:42 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/24 14:45:31 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/24 14:45:37 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+//#include <stdio.h>
+int ft_strcmp(char *s1, char *s2)
 {
-	unsigned int	ld;
-
-	ld = 0;
-	while (*(src + ld) != '\0' && ld < size)
+	int	a;
+	
+	a = 0;
+	while (*s1)
 	{
-		*(dest + ld) = *(src + ld);
-		ld++;
+		a += *s1;
+		s1++;
 	}
-	*(dest + ld) = '\0';
-	while (*(src + ld) != '\0')
-		ld++;
-	return (ld);
+	while (*s2)
+	{	
+		a -= *s2;
+		if (a < 0)
+			return (2);
+		s2++;
+	}
+	if(a == 0)
+		return (0);
+	return (1);
 }
+/*
+int main(){
+	char *s1 = "ABC", *s2= "ABCCC";
+	int n = ft_strcmp(s1, s2);
+	printf("%d\n", n);
+	return 0;
+}*/

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:53:02 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/23 15:55:42 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/21 19:55:02 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/21 19:55:13 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	ld;
+#include <unistd.h>
 
-	ld = 0;
-	while (*(src + ld) != '\0' && ld < size)
+void	ft_putstr(char *str)
+{
+	while (*str != '\0')
 	{
-		*(dest + ld) = *(src + ld);
-		ld++;
+		write(1, str, 1);
+		str++;
 	}
-	*(dest + ld) = '\0';
-	while (*(src + ld) != '\0')
-		ld++;
-	return (ld);
 }
+/*
+int main(void)
+{
+	char *pippo="asdasdasd";
+	ft_putstr(pippo);
+	return 0;
+
+	}
+*/

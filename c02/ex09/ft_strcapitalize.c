@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 18:12:43 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/22 18:52:04 by lbarreca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strcapitalize(char *str)
+char	*ft_strcapitalize(char *str)
 {
-        char *start;
-	
-        start = str;
-        while(*str != '\0')
-        {
-	if(str == start && *str >= 'a' && *str <= 'z')
+	char	*start;
+
+	start = str;
+	while (*str != '\0')
 	{
-	*str -= 32;
+		if (str == start && *str >= 'a' && *str <= 'z')
+		{
+			*str -= 32;
+		}
+		else if (str != start && *(str -1) == ' ' && *str >= 'a' && *str <= 'z')
+		{
+			*str -= 32;
+		}
+		str++;
 	}
-	else if(str != start && *(str-1) == ' ' && *str >= 'a' && *str <= 'z')
-	{
-		*str -= 32;
-	}
-	str++;
-        }
-        str = start;
-        return str;
+	str = start;
+	return (str);
 }
 /*
 int main(void)

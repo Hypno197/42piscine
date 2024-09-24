@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:53:02 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/23 15:55:42 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/20 12:35:19 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/20 12:36:52 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	ld;
+#include <unistd.h>
 
-	ld = 0;
-	while (*(src + ld) != '\0' && ld < size)
-	{
-		*(dest + ld) = *(src + ld);
-		ld++;
-	}
-	*(dest + ld) = '\0';
-	while (*(src + ld) != '\0')
-		ld++;
-	return (ld);
+void	ft_ft(int *nbr)
+{
+	int	n;
+
+	n = 42;
+	*nbr = n;
 }

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:53:02 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/23 15:55:42 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/21 19:43:33 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/21 19:46:37 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	ld;
+#include <unistd.h>
 
-	ld = 0;
-	while (*(src + ld) != '\0' && ld < size)
+int	ft_strlen(char *str)
+{
+	int	c;
+
+	c = 0;
+	while (*str != '\0')
 	{
-		*(dest + ld) = *(src + ld);
-		ld++;
+		c++;
 	}
-	*(dest + ld) = '\0';
-	while (*(src + ld) != '\0')
-		ld++;
-	return (ld);
+	return (c);
 }
+/*
+int main(void)
+{
+	char a[] = "diomerda";
+	char*  s = &a;
+	ft_strlen(s);
+	return 0;
+}*/

@@ -1,14 +1,25 @@
-char *ft_strupcase(char *str)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 18:11:17 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/24 13:07:17 by lbarreca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+char	*ft_strupcase(char *str)
 {
-	char *start;
+	char	*start;
 
 	start = str;
-        while(*str != '\0')
-        {
-        if(*str >= 'a' && *str <= 'z')
-                *str -= 32;
-	str++;
-        }
+	while (*str != '\0')
+	{
+		if (*str >= 'a' && *str <= 'z')
+			*str -= 32;
+		str++;
+	}
 	str = start;
-        return *str;
+	return (str);
 }

@@ -1,14 +1,26 @@
-char *ft_strlowcase(char *str)
-{
-        char *start;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 18:11:46 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/22 18:39:05 by lbarreca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-        start = str;
-        while(*str != '\0')
-        {
-        if(*str >= 'A' && *str <= 'Z')
-                *str += 32;
-        str++;
-        }
-        str = start;
-        return *str;
+char	*ft_strlowcase(char *str)
+{
+	char	*start;
+
+	start = str;
+	while (*str != '\0')
+	{
+		if (*str >= 'A' && *str <= 'Z')
+			*str += 32;
+		str++;
+	}
+	str = start;
+	return (str);
 }

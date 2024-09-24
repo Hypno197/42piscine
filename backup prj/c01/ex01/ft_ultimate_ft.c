@@ -1,47 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:57:12 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/24 12:57:16 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/21 13:31:15 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/21 19:48:43 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr_non_printable(char *str)
+void	ft_ultimate_ft(int *********nbr)
 {
-	int	c;
-	int	d;
-
-	c = 0;
-	d = 0;
-	while (*str != '\0')
-	{
-		if (*str >= ' ')
-			write(1, str, 1);
-		else
-		{
-			c = *str;
-			write(1, "\\", 1);
-			d = (c / 16) + '0';
-			write(1, &d, 1);
-			d = (c % 16);
-			if (d > 9)
-				d = d % 10 + 'a';
-			else
-				d = d + '0';
-			write(1, &d, 1);
-		}
-		str++;
-	}
+	*********nbr = 42;
 }
 /*
-int main(void)
+int	main(void)
 {
-	ft_putstr_non_printable("Coucou\ntu vas bien ?");
-		return 0;
+	int a;
+	int *ptr1;
+	int **ptr2;
+	int ***ptr3;
+	int ****ptr4;
+	int *****ptr5;
+	int ******ptr6;
+	int *******ptr7;
+	int ********ptr8;
+	int *********ptr9;
+	
+	a = 100;
+	ptr1 = &a;
+	ptr2 = &ptr1;
+	ptr3 = &ptr2;
+	ptr4 = &ptr3;
+	ptr5 = &ptr4;
+	ptr6 = &ptr5;
+	ptr7 = &ptr6;
+	ptr8 = &ptr7;
+	ptr9 = &ptr8;
+	ft_ultimate_ft(ptr9);
+
+	return 0;
 }*/
