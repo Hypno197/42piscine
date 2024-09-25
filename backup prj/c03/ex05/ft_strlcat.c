@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:57:12 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/24 17:52:12 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/09/25 12:59:44 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/09/25 18:22:39 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr_non_printable(char *str)
+unsigned int	ft_strlen(char *str)
 {
-	int	c;
-	int	d;
+	unsigned int	c;
 
-	d = 0;
+	c = 0;
 	while (*str != '\0')
 	{
-		if (*str >= ' ' && *str != 127)
-			write(1, str, 1);
-		else
-		{
-			c = *str;
-			write(1, "\\", 1);
-			d = (c / 16) + '0';
-			write(1, &d, 1);
-			d = (c % 16);
-			if (d > 9)
-				d = d - 10 + 'a';
-			else
-				d += '0';
-			write(1, &d, 1);
-		}
 		str++;
+		c++;
 	}
+	return (c);
 }
-/*
-int main(void)
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	ft_putstr_non_printable("Coucou\ntu vas bien ?");
-		return 0;
-}*/
+	unsigned int	d_len;
+	unsigned int	offset;
+
+	d_len = ft_strlen(dest);
+	offset = d_len;
+	while (*src && offset < size)
+	{
+		*(dest + offset) = *src;
+		offset++;
+		src++;
+		if (offset == size - 1)
+			break ;
+	}
+	*(dest + offset) = '\0';
+	d_len += offset;
+	return (d_len);
+}

@@ -6,31 +6,21 @@
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 22:49:44 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/24 22:49:52 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:02:59 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	a;
-	
-	a = 0;
-	while (*s1)
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
 	{
-		a += *s1;
-		s1++;
+		i++;
 	}
-	while (*s2)
-	{	
-		a -= *s2;
-		if (a < 0)
-			return (2);
-		s2++;
-	}
-	if(a == 0)
-		return (0);
-	return (1);
+	return (s1[i] - s2[i]);
 }
 /*
 int main(){

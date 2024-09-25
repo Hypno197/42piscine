@@ -6,7 +6,7 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:12:43 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/24 17:37:27 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:01:12 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ char	*ft_strcapitalize(char *str)
 	{
 		if (str == start && *str >= 'a' && *str <= 'z')
 			*str -= 32;
-		else if (str != start && *(str -1) == ' ' && *str >= 'a' && *str <= 'z')
-			*str -= 32;
-		else if (str != start && *(str -1) != ' ' && *str >= 'A' && *str <= 'Z')
+		else if (str != start)
+		{//da fixare
+			   if(*(str -1) < ' ' && *str >= 'a' && *str <= 'z')
+			   	   *str -= 32;
+		else if (*(str -1) < ' ' && *str >= 'A' && *str <= 'Z')
 			*str += 32;
-		else if (str != start && *(str -1) == '+' && *str >= 'a' && *str <= 'z')
+		else if (*(str -1) > '+' && *str >= 'a' && *str <= 'z')
 			*str -= 32;
-		else if (str != start && *(str -1) != '+' && *str >= 'A' && *str <= 'Z')
+		else if (*(str -1) != '+' && *str >= 'A' && *str <= 'Z')
 			*str += 32;
-		else if (str != start && *(str -1) == '-' && *str >= 'a' && *str <= 'z')
+		else if (*(str -1) == '-' && *str >= 'a' && *str <= 'z')
 			*str -= 32;
-		else if (str != start && *(str -1) != '-' && *str >= 'A' && *str <= 'Z')
+		else if (*(str -1) != '-' && *str >= 'A' && *str <= 'Z')
 			*str += 32;
 		str++;
 	}

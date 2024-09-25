@@ -6,7 +6,7 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:51:01 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/24 14:13:18 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:30:30 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -18,7 +18,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 
 	counter = 0;
 	start = dest;
-	while (*src != '\0' && counter < n)
+	while (*src && counter < n)
 	{
 		*dest = *src;
 		src++;
