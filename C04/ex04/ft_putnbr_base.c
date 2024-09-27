@@ -6,7 +6,7 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 20:47:17 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/26 20:56:40 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/27 10:50:36 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,24 @@
 int	ft_strlen(char *str)
 {
 	int	c;
+	int i;
 
+	i = 0;
 	c = 0;
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		str++;
-		c++;
+		while (str[c] !='\0')
+		{
+			if ((str[i] == str[c] && i != c) || str[c] == ' ')
+				return 0;
+			if (str[c] == '+' || str[c] == '-')
+				return 0;
+			c++;
+		}
+		c = 0;
+		i++;
 	}
-	return (c);
+	return (i);
 }
 
 void ft_putnbr_base(int nbr, char *base)
@@ -34,8 +44,10 @@ void ft_putnbr_base(int nbr, char *base)
 		return;
     if (nbr == -2147483648)
 	{
-		write(1, "-", 1);
-		return ft_putnbr_base(2147483647, base);
+		ft_putnbr_base((-2147483648/bl), base);
+		nbr = (-2147483648 % bl) * -1;
+		write(1, &base[nbr], 1);
+		return;
 	}
 	if (nbr < 0)
 	{
@@ -47,8 +59,5 @@ void ft_putnbr_base(int nbr, char *base)
 		ft_putnbr_base((nbr / bl), base);
 		nbr = nbr % bl;
 	}
-	if (nbr < bl)
-	{
 		write(1, &base[nbr], 1);
-	}
 }
