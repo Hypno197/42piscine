@@ -6,19 +6,20 @@
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:59:17 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/26 13:10:35 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:01:14 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 void	ft_putnbr(int nb)
 {
 	char	c;
 
 	if (nb == -2147483648)
 	{
-		write(1,"-2147483648", 11);
-		return ;	
+		write(1, "-2147483648", 11);
+		return ;
 	}
 	if (nb < 0)
 	{
