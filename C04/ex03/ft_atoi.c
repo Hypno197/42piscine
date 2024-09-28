@@ -6,9 +6,19 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:18:42 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/26 22:29:08 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:35:11 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+int is_space(char str)
+{
+	if (str == ' ' || str == '\n' || str == '\f')
+		return (1);
+	else if	(str == '\v' || str == '\t' || str == '\r')
+		return (1);
+	else 
+		return (0);
+}
+
 
 int	ft_atoi(char *str)
 {
@@ -19,7 +29,7 @@ int	ft_atoi(char *str)
 	sign = 1;
 	i = 0;
 	r = 0;
-	while (str[i] == ' ')
+	while (is_space(str[i]) == 1)
 		i++;
 	while (str[i] == '-' ||  str[i] == '+')
 	{

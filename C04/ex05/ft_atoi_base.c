@@ -1,3 +1,12 @@
+int is_space(char str)
+{
+    if (str == ' ' || str == '\n' || str == '\f')
+        return (1);
+    else if (str == '\v' || str == '\t' || str == '\r')
+        return (1);
+    else
+        return (0);
+}
 
 int ft_strlen(char *str)
 {
@@ -47,7 +56,7 @@ int	ft_atoi_base(char *str, char *base)
 	bl = ft_strlen(base);
 	if (bl < 2)
 		return 0;
-	while(*str == ' ')
+	while(is_space(*str) == 1)
 	   str++;
 	while(*str == '+' || *str == '-')
 	{
@@ -55,17 +64,6 @@ int	ft_atoi_base(char *str, char *base)
 			sign = -sign;
 	str++;
 	}
-	/*
-	while (*str)
-    {
-		while (*base)
-		{
-			if
-		}
-        res = (res*bl) + *str - '0';
-        str++;
-    }
-	*/	
 	while (*str)
 	{
 		val = chkbase(*str, base);
