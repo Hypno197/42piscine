@@ -6,12 +6,23 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 04:13:35 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/29 05:02:49 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:13:02 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+int is_valid(char **grid, int row, int col, int num);
+void print_grid(char **grid);
+int solve(char **matrix, char *views, int row, int col);
+int validate(char *str, int i, char **matrix);
+int check_visibility(char **m, char *views);
+int vis_ltor(char **grid, int r);
+int vis_rtol(char **grid, int r);
+int vis_dtou(char **grid, int r);
+int vis_utod(char **grid, int r);
 
 int ft_strlen(char *str)
 {
@@ -68,36 +79,14 @@ int conditions(char *cu, char *cd, char *rl, char *rr)
 	}
 	return 1;
 }
-
-int solve(char grid[4][4], char strex[16], int pos)
-{
-	int	h;
-	int	i;
-
-	i = 0;
-	if(pos == 16)
-		return (1);
-	h = 0;
-	while (++size <= 4)
-	{
-	if (chkchar(grid)
-	}
-}
-
-
-int validate(char *str, int i)
+int validate(char *str, int i, char **matrix)
 {
     char *colup;
     char *coldwn;
     char *rowlt;
     char *rowrt;
 
-	colup = (char *)malloc(4 * sizeof (char));
-	coldwn = (char *)malloc(4 * sizeof (char));
-	rowlt = (char *)malloc(4 * sizeof (char));
-	rowrt = (char *)malloc(4 * sizeof (char));
-	i = 0;
-    while (i <16)
+    while (++i <16)
     {
         if(i < 4)
             colup[(i % 4)] = str[i];
@@ -107,101 +96,13 @@ int validate(char *str, int i)
             rowlt[(i % 4)] = str[i];
 		else    
 			rowrt[(i % 4)] = str[i];
-    i++;
 	}
-    printf("%s\n", colup);
-printf("%s\n", coldwn);
-printf("%s\n", rowlt);
-printf("%s\n", rowrt);
-
-	return (conditions(colup, coldwn, rowlt, rowrt));
+		if (conditions(colup, coldwn, rowlt, rowrt) == 1)
+		    return solve(matrix, str, 0, 0);
+		return 0;
 }
 
-int vis_ltor(char **grid, int r)
-{
-    int	hmax;
-    int	visible;
-	int	i;
-
-	i = 0;
-    visible = 1;
-	hmax = grid[r][0];
-	while(i < 4)
-	{
-		if(grid[r][i] > hmax)
-		{
-			visible++;
-			hmax = grid[r][i];
-		}
-	i++;
-	}
-	return visible;
-}
-
-int vis_rtol(char **grid, int r)
-{
-    int hmax;
-    int visible;
-    int i;
-
-    i = 3;
-    visible = 1;
-    hmax = grid[r][3];
-    while(i >= 0 )
-    {
-        if(grid[r][i] > hmax)
-        {
-            visible++;
-            hmax = grid[r][i];
-        }
-    i--;
-    }
-    return visible;
-}
-
-int vis_dtou(char **grid, int r)
-{
-    int hmax;
-    int visible;
-    int i;
-
-    i = 3;
-    visible = 1;
-    hmax = grid[3][i];
-    while(i >= 0 )
-    {
-        if(grid[i][r] > hmax)
-        {
-            visible++;
-            hmax = grid[i][r];
-        }
-    i--;
-    }
-    return visible;
-}
-
-int vis_utod(char **grid, int r)
-{
-    int hmax;
-    int visible;
-    int i;
-
-    i = 0;
-    visible = 1;
-    hmax = grid[0][i];
-    while(i < 3)
-    {
-        if(grid[i][r] > hmax)
-        {
-            visible++;
-            hmax = grid[i][r];
-        }
-    i++;
-    }
-    return visible;
-}
-
-char *extrval(char *str)
+char *extrval(char *str, char **matrix)
 {
     int     i;
     int     j;
@@ -219,7 +120,7 @@ char *extrval(char *str)
         }
         i++;
     }
-    if (ft_strlen(strex) != 16 || validate(strex, -1) == 0)
+    if (ft_strlen(strex) != 16 || validate(strex, -1, matrix) == 0)
 		return ("Error");
     return strex;
 }
@@ -232,8 +133,11 @@ int main(int ac, char **av)
 	matrix = crgrid();
     if (ac != 2)
         return 0;
-    views = extrval(av[1]);
-    printf("%s\n", views);
-    printf("%s\n", matrix[3]);
-    return 0;
+    views = extrval(av[1], matrix);
+    if (*views == 'E')
+	{
+		write(1, "Error\n", 6);
+		return 1;
+	}
+		return 0;
 }
