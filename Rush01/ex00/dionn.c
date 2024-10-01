@@ -6,7 +6,7 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 22:16:54 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/29 22:50:50 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/09/29 23:25:21 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	is_valid(char **grid, int row, int col, char num)
 	return (1);
 }
 
-void	print_grid(char	**grid)
+int	print_grid(char	**grid)
 {
 	int	i;
 	int	j;
@@ -90,6 +90,7 @@ void	print_grid(char	**grid)
 		write(1, "\n", 1);
 		i++;
 	}
+	return (1)
 }
 
 int	vis_ltor(char **grid, int r)
@@ -196,23 +197,18 @@ int	check_visibility(char	**grid,	char	*views)
 	return (1);
 }
 
-int	solve_grid(char	**grid,	char	*views)
+int	solve_grid(char	**grid,	char	*views, int row, int col)
 {
-	int		row;
-	int		col;
 	char	num;
 
-	row = 0;
-	while (row < 4)
+	while (++row < 4)
 	{
-		col = 0;
-		while (col < 4)
-		{
+		col = -1;
+		while (++col < 4)
 			if (grid[row][col] == '0')
 			{
-				num = '1';
-				while (num <= '4')
-				{
+				num = '0';
+				while (++num <= '4')
 					if (is_valid(grid, row, col, num))
 					{
 						grid[row][col] = num;
@@ -220,19 +216,12 @@ int	solve_grid(char	**grid,	char	*views)
 							return (1);
 						grid[row][col] = '0';
 					}
-					num++;
-				}
 				return (0);
 			}
-			col++;
-		}
 		row++;
 	}
 	if (check_visibility(grid, views))
-	{
-		print_grid(grid);
-		return (1);
-	}
+		return print_grid(grid);
 	return (0);
 }
 
@@ -280,7 +269,7 @@ int	main(int ac, char **av)
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (!solve_grid(matrix, views))
+	if (!solve_grid(matrix, views, -1, -1))
 		write(1, "Error\n", 6);
 	return (0);
 }
