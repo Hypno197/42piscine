@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 21:20:34 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/03 21:26:04 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/10/02 00:39:22 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/10/03 12:16:35 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,29 @@ void	ft_putstr(char *str)
 		write(1, str, 1);
 		str++;
 	}
-	write(1, "\n", 1);
-}
-
-void	ft_swap(char **a, char **b)
-{
-	char	*temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	int		i;
+	char	a;	
+	int		j;
 
-	i = 1;
-	while (i < argc - 1)
+	a = ' ';
+	i = 0;
+	while (a < 127)
 	{
 		j = 1;
-		while (j < argc - 1)
+		a++;
+		while (j < argc)
 		{
-			if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+			if (argv[j][0] == a)
 			{
-				ft_swap(&argv[j], &argv[j + 1]);
+				ft_putstr(argv[j]);
+				write(1, "\n", 1);
 			}
 			j++;
 		}
-		i++;
 	}
-	i = 0;
-	while (++i < argc)
-		ft_putstr(argv[i]);
 	return (0);
 }

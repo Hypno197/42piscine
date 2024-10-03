@@ -6,7 +6,7 @@
 /*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:15:01 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/01 21:55:37 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/03 21:31:09 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_find_next_prime(int nb)
 	a = 2;
 	while (a < nb)
 	{
-		nb++;
 		while (a <= nb)
 		{
 			if (a == nb)
@@ -29,14 +28,15 @@ int	ft_find_next_prime(int nb)
 				break ;
 			a++;
 		}
+		nb++;
 		a = 2;
 	}
 	return (2);
 }
 /*
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	printf("%d\n", ft_find_next_prime(atoi(av[1])));
-	return 0;
+	return (0);
 }
 */
