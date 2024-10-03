@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
+/*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 00:22:01 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/03 12:11:33 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/10/01 21:15:01 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/10/01 21:54:49 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int	ft_is_prime(int nb)
 {
-	while (*str != '\0')
-	{
-		write(1, str, 1);
-		str++;
-	}
-}
+	int	a;
 
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	a = 1;
+	if (nb < 2)
+		return (0);
+	while (++a < nb)
+		if (nb % a == 0)
+			return (0);
 	return (1);
 }
+/*
+int main(int ac, char **av)
+{
+	printf("%d\n", ft_is_prime(atoi(av[1])));
+	return 0;
+}*/

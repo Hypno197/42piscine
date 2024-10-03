@@ -6,9 +6,9 @@
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 05:50:38 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/02 06:01:23 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:08:33 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(Value) ((Value < 0) ? -(Value) : Value)
+#define ABS(Value) ((Value) * ((Value) >= 0) + (-(Value)) * ((Value) < 0))
 

@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 01:05:32 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/03 12:23:09 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/10/01 20:22:07 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/10/01 21:44:58 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+//#include <stdio.h>
+//#include <stdlib.h>
+int	ft_iterative_power(int nb, int power)
 {
-	int	c;
+	int	res;
 
-	c = 0;
-	while (*str != '\0')
+	res = nb;
+	if (power < 0)
+		return (0);
+	while (power > 1)
 	{
-		str++;
-		c++;
+		res *= nb;
+		power--;
 	}
-	return (c);
+	if (power == 0)
+		return (1);
+	return (res);
 }
-
-char	*ft_strdup(char *src)
+/*
+int main(int ac, char **av)
 {
-	int		srclen;
-	char	*dest;
-	int		i;
-
-	i = 0;
-	srclen = ft_strlen(src);
-	dest = (char *)malloc(srclen * sizeof(char));
-	if (dest != NULL)
-	{
-		while (src[i] != '\0')
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-		return (dest);
-	}
-	return (NULL);
-}
+        printf("%d\n", ft_iterative_power(atoi(av[1]), atoi(av[2])));
+        return 0;
+}*/
