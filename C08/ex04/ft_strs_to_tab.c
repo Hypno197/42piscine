@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
+/*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 06:22:36 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/04 11:54:35 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/04 22:31:32 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
@@ -85,8 +87,6 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		ft_strcpy(strarr[i].copy, av[i]);
 		i++;
 	}
-	strarr[i].size = 0;
 	strarr[i].str = 0;
-	strarr[i].copy = 0;
 	return (strarr);
 }
