@@ -6,9 +6,11 @@
 /*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 01:05:32 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/03 12:23:09 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:49:17 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
