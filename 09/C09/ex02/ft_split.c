@@ -6,13 +6,12 @@
 /*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:00:59 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/05 21:48:48 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/06 03:25:29 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-// questa prende c e confronta se é roba del cset
 int	ft_chkdel(char c, char *cset)
 {
 	int	i;
@@ -21,32 +20,20 @@ int	ft_chkdel(char c, char *cset)
 	while (cset[i])
 	{
 		if (c == cset[i])
-			return (1);
+			return (0);
+		i++;
 	}
-	return (0);
-}
-
-int	ft_strlen(char *str)
-{
-	int	c;
-
-	c = 0;
-	while (*str != '\0')
-	{
-		str++;
-		c++;
-	}
-	return (c);
+	return (1);
 }
 
 int	ft_wrdlen(char *str, int i, char *cset)
 {
 	int	c;
-	int len;
+	int	len;
 
 	len = 0;
 	c = i;
-	while (str[c] != '\0' && ft_chkdel(str[c], cset) != 1)
+	while (str[c] != '\0' && ft_chkdel(str[c], cset) == 1)
 	{
 		len++;
 		c++;
@@ -54,26 +41,69 @@ int	ft_wrdlen(char *str, int i, char *cset)
 	return (len);
 }
 
-	// dobbiamo fare in modo che inizia da 0 e inizia
-	// a contare solo quando incontra il char del charset
-	// e conta solo se è chiuso.
 int	count_words(char *str, char *cset)
 {
-	int i;
+	int	i;
+	int	words;
+	int	len;
 
+	len = 0;
+	words = 0;
 	i = 0;
-	while (str[i] && ft_chkdel(str[i], cset))
+	while (str[i])
+	{
+		len = 0;
+		while (str[i] && ft_chkdel(str[i], cset) == 0)
+		{
+			i++;
+		}
+		while (str[i] && ft_chkdel(str[i], cset) == 1)
+		{
+			len++;
+			i++;
+		}
+		if (ft_chkdel(str[i], cset) == 0 && ft_chkdel(str[i - len - 1],
+				cset) == 0)
+			words++;
+	}
+	return (words);
+}
 
+char	**ft_splitloc(char **mtx, char *str, char *charset, int i)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	while (ft_chkdel(str[i], charset) == 1)
+		i++;
+	while (str[i] && j < count_words(str, charset))
+	{
+		k = 0;
+		while (ft_chkdel(str[i], charset) == 0)
+			i++;
+		mtx[j] = (char *)malloc((ft_wrdlen(str, i, charset) + 1)
+				* sizeof(char));
+		while (str[i] && ft_chkdel(str[i], charset) == 1)
+		{
+			mtx[j][k] = str[i];
+			i++;
+			k++;
+		}
+		mtx[j][k] = '\0';
+		j++;
+	}
+	mtx[j] = NULL;
+	return (mtx);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	/*
-	strlen su str
-	count words con chkdel come separatore
-	mallocchiamo un **char per words+1 pk stringa 0 finale
-	while che copia string in *char[i] MALLOCCATA E CHE NON PRENDE ANCHE INIZIO E FINE E POI LA NULLTERMINA.
-	dopo while NULLiamo indirizzo dell'ultimo pointer malloccato in **char
-	gg.
-	*/
+	char	**mtx;
+	int		i;
+
+	i = 0;
+	mtx = (char **)malloc(((count_words(str, charset)) + 1) * sizeof(char *));
+	ft_splitloc(mtx, str, charset, i);
+	return (mtx);
 }

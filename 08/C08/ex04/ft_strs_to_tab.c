@@ -6,12 +6,17 @@
 /*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 06:22:36 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/04 22:31:32 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/05 19:42:36 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
+typedef struct s_stock_str
+{
+int size;
+char *str;
+char *copy;
+} t_stock_str;
 int	ft_strlen(char *str)
 {
 	int	c;

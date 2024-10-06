@@ -6,7 +6,7 @@
 /*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:54:43 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/04 22:31:54 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/05 19:43:07 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,18 @@ void	ft_show_tab(struct s_stock_str *par)
 	{
 		ft_putstr(par[i].str);
 		ft_putnbr(par[i].size);
+		write(1, "\n", 1);
 		ft_putstr(par[i].copy);
 		i++;
 	}
 	return ;
+}
+
+int main(int ac, char **av)
+{
+	if (ac == 1)
+	return 0;
+	t_stock_str *mario = ft_strs_to_tab(ac, av);
+	ft_show_tab(mario);
+	return 0;
 }

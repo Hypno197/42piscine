@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_display_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarreca <lbarreca@student.roma42.it>      +#+  +:+       +#+        */
+/*   By: lbarreca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 11:50:46 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/09/26 11:50:47 by lbarreca         ###   ########.fr       */
+/*   Created: 2024/10/06 05:44:45 by lbarreca          #+#    #+#             */
+/*   Updated: 2024/10/06 05:45:29 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int main()
 {
-	str--;
-	while (*(++str))
-		write(1, str, 1);
+	write(2, "error", 5);
+	return 0;
 }
