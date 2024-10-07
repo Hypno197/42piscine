@@ -6,7 +6,7 @@
 /*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:00:59 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/06 03:25:29 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:53:40 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,18 @@ char	**ft_split(char *str, char *charset)
 	ft_splitloc(mtx, str, charset, i);
 	return (mtx);
 }
+/*
+int main(int ac, char **av)
+{
+	int i =0;
+	if (ac != 3)
+		return 2;
+	char **mtx = ft_split(av[1], av[2]);
+	while (mtx[i])
+	{
+	printf("%s\n", mtx[i]);
+		i++;
+	}
+	return 0;
+}
+*/

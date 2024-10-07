@@ -12,8 +12,11 @@
 
 #include <unistd.h>
 
-int main()
+int main(int ac, char **av)
 {
-	write(2, "error", 5);
+	//condizioni di ac
+	int fd;
+	
+	fd = open(av[1])
 	return 0;
 }
