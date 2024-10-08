@@ -6,11 +6,12 @@
 /*   By: lbarreca <lbarreca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:00:59 by lbarreca          #+#    #+#             */
-/*   Updated: 2024/10/07 12:53:40 by lbarreca         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:04:07 by lbarreca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft_chkdel(char c, char *cset)
 {
@@ -41,15 +42,12 @@ int	ft_wrdlen(char *str, int i, char *cset)
 	return (len);
 }
 
-int	count_words(char *str, char *cset)
+int	count_words(char *str, char *cset, int i)
 {
-	int	i;
 	int	words;
 	int	len;
 
-	len = 0;
 	words = 0;
-	i = 0;
 	while (str[i])
 	{
 		len = 0;
@@ -65,6 +63,9 @@ int	count_words(char *str, char *cset)
 		if (ft_chkdel(str[i], cset) == 0 && ft_chkdel(str[i - len - 1],
 				cset) == 0)
 			words++;
+		else if ((ft_chkdel(str[i], cset) == 0 && (i - len) == 0)
+			|| (str[i] == '\0' && ft_chkdel(str[i - len - 1], cset) == 0))
+			words++;
 	}
 	return (words);
 }
@@ -75,9 +76,7 @@ char	**ft_splitloc(char **mtx, char *str, char *charset, int i)
 	int	k;
 
 	j = 0;
-	while (ft_chkdel(str[i], charset) == 1)
-		i++;
-	while (str[i] && j < count_words(str, charset))
+	while (j < count_words(str, charset, 0))
 	{
 		k = 0;
 		while (ft_chkdel(str[i], charset) == 0)
@@ -103,22 +102,29 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 
 	i = 0;
-	mtx = (char **)malloc(((count_words(str, charset)) + 1) * sizeof(char *));
+	if(count_words(str, charset, 0) > 0)
+	{
+	mtx = (char **)malloc(((count_words(str, charset, 0)) + 1)
+			* sizeof(char *));
 	ft_splitloc(mtx, str, charset, i);
+	}
 	return (mtx);
 }
 /*
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int i =0;
+	char	**mtx;
+	int		i;
+
+	i = 0;
 	if (ac != 3)
-		return 2;
-	char **mtx = ft_split(av[1], av[2]);
-	while (mtx[i])
+		return (2);
+	mtx = ft_split(av[1], av[2]);
+	while (mtx[i] != 0)
 	{
-	printf("%s\n", mtx[i]);
+		printf("%s\n", mtx[i]);
 		i++;
 	}
-	return 0;
+	return (0);
 }
 */
